@@ -1,4 +1,5 @@
-#Meal Price Calculator
+Meal Price Calculator
+---
 
 
 The **TL:DR** is this is a meal price calculating python script. and if that's all you want you can ignore two files named [lists in list.py] & [dics in list.py].
