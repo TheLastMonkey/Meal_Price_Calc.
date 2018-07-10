@@ -113,8 +113,6 @@ def show_total_screen():
         main()
 
 
-
-
 def main():
     """Main Menu selection structure """
     os.system("clear")
