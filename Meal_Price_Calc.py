@@ -51,7 +51,7 @@ def display_items():
 def grand_total(total):
     '''loops the items totals adding them'''
     global item_list
-    for item in range(len(item_list)):       #  is more pythoic that count loop
+    for item in range(len(item_list)):       #  is more pythoic than count loop
         total += item_list[item].total_item
     return total
 
