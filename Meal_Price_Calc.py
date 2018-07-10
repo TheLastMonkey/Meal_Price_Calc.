@@ -36,6 +36,28 @@ class Item:
             main()
 
 
+def del_item():
+    os.system("clear")
+    del_text_menu = 'Delete Item from List'
+    print(del_text_menu.center(100, '_'))
+    display_items()
+    print('')
+    try:
+        print(30*'_')
+        item_to_be_del = int(input('Item Number to be Removed? : '))
+        del item_list[item_to_be_del - 1]
+        show_total_screen()
+
+    except IndexError as e:
+        print("you cant delete something that's not there... ")
+        time.sleep(3)
+        show_total_screen()
+    except ValueError as e:
+        print('Was that an Item Number?')
+        time.sleep(3)
+        show_total_screen()
+
+
 def display_items():
     '''Display the list of items and the data'''
     for index, item in enumerate(item_list, start=1):
@@ -66,7 +88,7 @@ def show_total_screen():
     grand_total(total)
     print('Your total is:  ', '${:,.2f}\n'.format(grand_total(total)))
     print(100 * '_')
-    go_to_main = input('Press [Enter] for Menu     [Q]uit: ')
+    go_to_main = input('Press [Enter] for Menu       [D]elete Item      [Q]uit: ')
     os.system("clear")
     if go_to_main == '':
         main()
@@ -74,6 +96,9 @@ def show_total_screen():
         os.system("clear")
         print('GOOD BYE')
         quit()
+    elif go_to_main == 'd':
+        del_item()
+
     else:
         main()
 
@@ -103,7 +128,7 @@ def main():
             display_items()
             print('\nYour total is:  ', '${:,.2f}\n'.format(grand_total(total)))
             print(100 * '_')
-            add_more = input('ADD More Press [Enter]     [M]ain Menu    [T]otal    [Q]uit  :')
+            add_more = input('ADD More Press [Enter]     [M]ain Menu    [T]otal    [D]elete    [Q]uit  :')
             os.system("clear")
             if add_more == '':
                 add_more = True
@@ -111,6 +136,8 @@ def main():
                 main()
             elif add_more == 't':
                 show_total_screen()
+            elif add_more == 'd':
+                del_item()
             elif add_more == 'q':
                 os.system("clear")
                 print('GOOD BYE')
