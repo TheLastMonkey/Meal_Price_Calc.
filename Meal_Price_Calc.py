@@ -36,6 +36,15 @@ class Item:
             main()
 
 
+def add_item():
+    os.system("clear")
+    global item_list, total
+    add_more = True
+    while add_more is True:
+        item_list.append(Item.from_input())
+        os.system("clear")
+        show_total_screen()
+
 def del_item():
     os.system("clear")
     del_text_menu = 'Delete Item from List'
@@ -88,26 +97,28 @@ def show_total_screen():
     grand_total(total)
     print('Your total is:  ', '${:,.2f}\n'.format(grand_total(total)))
     print(100 * '_')
-    go_to_main = input('Press [Enter] for Menu       [D]elete Item      [Q]uit: ')
+    go_to_main = input('ADD More Press [Enter]       [M]ain Menu       [D]elete       [Q]uit  :')
     os.system("clear")
     if go_to_main == '':
-        main()
+        add_item()
     elif go_to_main == 'q':
         os.system("clear")
         print('GOOD BYE')
         quit()
     elif go_to_main == 'd':
         del_item()
-
+    elif go_to_main =="m":
+        main()
     else:
         main()
+
+
 
 
 def main():
     """Main Menu selection structure """
     os.system("clear")
     global item_list, total
-    add_more = True
     menu_text = 'Main Menu'
     print(menu_text.center(30, '_'))
     print('Welcome! Please pick an action')
@@ -118,33 +129,7 @@ def main():
     print(30 * '_')
     main_action = input("Input # or Letter: ")
     if main_action in ('1', 'a', ''):
-        os.system("clear")
-        global item_list, total
-        while add_more is True:
-            item_list.append(Item.from_input())
-            os.system("clear")
-            item_list_text_menu = 'Item Price List'
-            print(item_list_text_menu.center(100, '_'))
-            display_items()
-            print('\nYour total is:  ', '${:,.2f}\n'.format(grand_total(total)))
-            print(100 * '_')
-            add_more = input('ADD More Press [Enter]     [M]ain Menu    [T]otal    [D]elete    [Q]uit  :')
-            os.system("clear")
-            if add_more == '':
-                add_more = True
-            elif add_more == 'm':
-                main()
-            elif add_more == 't':
-                show_total_screen()
-            elif add_more == 'd':
-                del_item()
-            elif add_more == 'q':
-                os.system("clear")
-                print('GOOD BYE')
-                quit()
-            else:
-                main()
-
+        add_item()
     elif main_action in ('2', 't'):
         show_total_screen()
     elif main_action in ('3', 'q'):
@@ -153,6 +138,5 @@ def main():
         quit()
     else:
         main()
-
 
 main()
